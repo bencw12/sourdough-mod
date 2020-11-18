@@ -1,0 +1,24 @@
+{
+  "variants": {
+    "dough=0,facing=east": { "model": "sdm:cutting_board_block", "y": 90},
+    "dough=0,facing=south": { "model": "sdm:cutting_board_block", "y": 180  },
+    "dough=0,facing=west": { "model": "sdm:cutting_board_block", "y": 270 },
+    "dough=0,facing=north": { "model": "sdm:cutting_board_block" },
+    "dough=1,facing=north": { "model": "sdm:cuttingboard_1" },
+    "dough=1,facing=east": { "model": "sdm:cuttingboard_1", "y": 90 },
+    "dough=1,facing=south": { "model": "sdm:cuttingboard_1", "y": 180 },
+    "dough=1,facing=west": { "model": "sdm:cuttingboard_1", "y": 270 },
+    "dough=2,facing=north": { "model": "sdm:cuttingboard_2" },
+    "dough=2,facing=east": { "model": "sdm:cuttingboard_2", "y": 90 },
+    "dough=2,facing=south": { "model": "sdm:cuttingboard_2", "y": 180 },
+    "dough=2,facing=west": { "model": "sdm:cuttingboard_2", "y": 270 },
+    "dough=3,facing=north": { "model": "sdm:cuttingboard_3" },
+    "dough=3,facing=east": { "model": "sdm:cuttingboard_3", "y": 90 },
+    "dough=3,facing=south": { "model": "sdm:cuttingboard_3", "y": 180 },
+    "dough=3,facing=west": { "model": "sdm:cuttingboard_3", "y": 270 },
+    "dough=4,facing=north": { "model": "sdm:cuttingboard_full" },
+    "dough=4,facing=east": { "model": "sdm:cuttingboard_full", "y": 90 },
+    "dough=4,facing=south": { "model": "sdm:cuttingboard_full", "y": 180 },
+    "dough=4,facing=west": { "model": "sdm:cuttingboard_full", "y": 270 }
+  }
+}

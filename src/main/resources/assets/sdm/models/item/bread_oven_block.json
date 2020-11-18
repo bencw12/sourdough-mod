@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "sdm:blocks/bread_oven_block"
+  }
+
+}

@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "fermenting=0": { "model": "sdm:jar_block" },
+    "fermenting=1": { "model": "sdm:jar_block_fermenting" },
+    "fermenting=2": { "model": "sdm:jar_block_fermenting1" },
+    "fermenting=3": { "model": "sdm:jar_block_fermenting2" },
+    "fermenting=4": { "model": "sdm:jar_block_fermenting3" },
+    "fermenting=5": { "model": "sdm:jar_block_fermenting4" },
+    "fermenting=6": { "model": "sdm:jar_block_fermenting5" }
+  }
+}

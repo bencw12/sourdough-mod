@@ -1,0 +1,17 @@
+tile.jar_block.name=Jar
+tile.cutting_board_block.name=Cutting Board
+tile.bread_oven_block.name=Bread Oven
+
+item.sourdough_starter.tier1.name=Sourdough Starter
+item.sourdough_starter.tier2.name=Nether Wart Sourdough Starter
+item.sourdough_starter.tier3.name=Chorus Fruit Sourdough Starter
+
+item.sourdough.tier1.name=Sourdough
+item.sourdough.tier2.name=Nether Wart Sourdough
+item.sourdough.tier3.name=Chorus Fruit Sourdough
+
+item.sourdough_cooked_tier1.tier1.name=Cooked Sourdough
+item.sourdough_cooked_tier2.tier2.name=Cooked Nether Wart Sourdough
+item.sourdough_cooked_tier3.tier3.name=Cooked Chorus Fruit Sourdough
+
+
