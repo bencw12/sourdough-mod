@@ -1,2 +1,2 @@
 # sourdough-mod
-Adds the Sourdough food item to Minecraft.
+Adds the sourdough food item to Minecraft 1.12.2
