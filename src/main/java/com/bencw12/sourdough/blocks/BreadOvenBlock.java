@@ -201,16 +201,6 @@ public class BreadOvenBlock extends BlockBase {
             }
         }
 
-        //Remove a log
-        /*
-        else if(result.isEmpty() && dough.isEmpty() && !oven.isCooking() && oven.getLogs() > 0){
-            ItemStack log = new ItemStack(logs.getItem());
-            logs.setCount(logs.getCount() - 1);
-            oven.setSlot(3, logs);
-            player.addItemStackToInventory(log);
-        }
-        */
-
         world.notifyBlockUpdate(pos, state, state, 3);
         oven.markDirty();
 
