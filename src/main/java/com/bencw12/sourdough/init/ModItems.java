@@ -11,7 +11,6 @@ import java.util.List;
 public class ModItems {
 
     public static final List<Item> ITEMS =  new ArrayList<Item>();
-
     public static final Item SOURDOUGH_STARTER = new ItemSourdoughStarter();
     public static final Item SOURDOUGH_COOKED_T1 = new ItemCookedSourdoughT1();
     public static final Item SOURDOUGH_COOKED_T2 = new ItemCookedSourdoughT2();
@@ -24,7 +23,4 @@ public class ModItems {
         event.getRegistry().register(SOURDOUGH);
 
     }
-
-
-
 }
