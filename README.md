@@ -1,5 +1,5 @@
 # Bencw12's Sourdough Mod
-Adds the sourdough food item to Minecraft 1.12.2
+Adds the sourdough food item to Minecraft 1.12.2 (will update to 1.15 soon)
 
 Features:
 
