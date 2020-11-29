@@ -12,17 +12,11 @@ public class SourdoughUtil {
         NBTTagCompound nbt = new NBTTagCompound();
         nbt.setString("Tier", tier.getName());
         nbt.setString("Effect", effect.getName());
-
         stack.setTagCompound(nbt);
-
-
-
+        
         return stack;
     }
-
-
-
-
+    
     public static String getRegistryNameFromNBT(ItemStack stack){
 
         String result = "";
@@ -31,13 +25,10 @@ public class SourdoughUtil {
             if(stack.getTagCompound().hasKey("Tier")){
                 result += stack.getTagCompound().getString("Tier");
             }
-
             return result;
         }
-
         return "tier1";
     }
-
 
     public static enum Tier {
         T1("tier1"),
@@ -45,16 +36,12 @@ public class SourdoughUtil {
         T3("tier3");
 
         private String name;
-
         private Tier(String name){
             this.name = name;
         }
-
         public String getName(){
             return this.name;
         }
-
-
     }
 
     public static enum Effect {
@@ -96,20 +83,8 @@ public class SourdoughUtil {
         STRONG_TURTLE("minecraft:strong_turtle_master"),
         LONG_TURTLE_MASTER("minecraft:long_turtle_master");
 
-
-
-
-
-
-
-
-
         private String name;
-
         private Effect(String name) { this.name = name; }
-
         public String getName() { return this.name; }
     }
-
-
 }
