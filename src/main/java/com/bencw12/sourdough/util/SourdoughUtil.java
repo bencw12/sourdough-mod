@@ -7,7 +7,6 @@ import net.minecraft.util.ResourceLocation;
 
 public class SourdoughUtil {
 
-
     public static ItemStack createTier(ItemStack stack, Tier tier, Effect effect){
         NBTTagCompound nbt = new NBTTagCompound();
         nbt.setString("Tier", tier.getName());
