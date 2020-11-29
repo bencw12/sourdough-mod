@@ -235,61 +235,23 @@ public class BreadOvenBlock extends BlockBase {
 
             switch(facing) {
                 case WEST:
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x - 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x - 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x - 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x - 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x - 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x - 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x - 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x - 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x - 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x - 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x - 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
+                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x - 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[15]);
                     world.spawnParticle(EnumParticleTypes.FLAME, x - 0.32D, y + 0.1D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
                     break;
                 case EAST:
                     world.spawnParticle(EnumParticleTypes.FLAME, x + 0.32D, y+0.1D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x + 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x + 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x + 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x + 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x + 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x + 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x + 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x + 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x + 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x + 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x + 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[0]);
+                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x + 0.2, smokeY + 1.0D, z + lvt_14_1_/6.0D, 0.0D, 0.0D, 0.0D, new int[15]);
 
                     break;
                 case NORTH:
                     world.spawnParticle(EnumParticleTypes.FLAME, x + lvt_14_1_/6.0D, y, z - 0.32D, 0.0D, 0.0D, 0.0D, new int[0]);
                     world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, smokeY + 1.0D, z - 0.2, 0.0D, 0.0D, 0.0D, new int[15]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, smokeY + 1.0D, z - 0.2, 0.0D, 0.0D, 0.0D, new int[15]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, smokeY + 1.0D, z - 0.2, 0.0D, 0.0D, 0.0D, new int[15]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, smokeY + 1.0D, z - 0.2, 0.0D, 0.0D, 0.0D, new int[15]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, smokeY + 1.0D, z - 0.2, 0.0D, 0.0D, 0.0D, new int[15]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, smokeY + 1.0D, z - 0.2, 0.0D, 0.0D, 0.0D, new int[15]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, smokeY + 1.0D, z - 0.2, 0.0D, 0.0D, 0.0D, new int[15]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, smokeY + 1.0D, z - 0.2, 0.0D, 0.0D, 0.0D, new int[15]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, smokeY + 1.0D, z - 0.2, 0.0D, 0.0D, 0.0D, new int[15]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, smokeY + 1.0D, z - 0.2, 0.0D, 0.0D, 0.0D, new int[15]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, smokeY + 1.0D, z - 0.2, 0.0D, 0.0D, 0.0D, new int[15]);
+
                     break;
                 case SOUTH:
                     world.spawnParticle(EnumParticleTypes.FLAME, x + lvt_14_1_/6.0D, y, z + 0.32D, 0.0D, 0.0D, 0.0D, new int[0]);
                     world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, smokeY + 1.0D, z + 0.2, 0.0D, 0.0D, 0.0D, new int[15]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, smokeY + 1.0D, z + 0.2, 0.0D, 0.0D, 0.0D, new int[15]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, smokeY + 1.0D, z + 0.2, 0.0D, 0.0D, 0.0D, new int[15]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, smokeY + 1.0D, z + 0.2, 0.0D, 0.0D, 0.0D, new int[15]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, smokeY + 1.0D, z + 0.2, 0.0D, 0.0D, 0.0D, new int[15]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, smokeY + 1.0D, z + 0.2, 0.0D, 0.0D, 0.0D, new int[15]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, smokeY + 1.0D, z + 0.2, 0.0D, 0.0D, 0.0D, new int[15]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, smokeY + 1.0D, z + 0.2, 0.0D, 0.0D, 0.0D, new int[15]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, smokeY + 1.0D, z + 0.2, 0.0D, 0.0D, 0.0D, new int[15]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, smokeY + 1.0D, z + 0.2, 0.0D, 0.0D, 0.0D, new int[15]);
-                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, smokeY + 1.0D, z + 0.2, 0.0D, 0.0D, 0.0D, new int[15]);
+ 
             }
 
         }
