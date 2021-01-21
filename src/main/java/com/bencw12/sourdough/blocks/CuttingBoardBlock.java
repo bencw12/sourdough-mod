@@ -54,7 +54,12 @@ public class CuttingBoardBlock extends BlockBase implements ITileEntityProvider 
     }
 
     public AxisAlignedBB getBoundingBox(IBlockState p_getBoundingBox_1_, IBlockAccess p_getBoundingBox_2_, BlockPos p_getBoundingBox_3_) {
-        return BOUNDS;
+        if(p_getBoundingBox_1_.getValue(FACING) == EnumFacing.NORTH || p_getBoundingBox_1_.getValue(FACING) == EnumFacing.SOUTH){
+            return BOUNDS;
+        }
+        else{
+            return new AxisAlignedBB(0.1875D, 0, 0.0625D, 0.8125D, 0.0625D, 0.9375D);
+        }
     }
 
     @Nullable

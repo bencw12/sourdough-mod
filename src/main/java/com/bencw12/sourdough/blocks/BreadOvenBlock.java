@@ -37,6 +37,7 @@ import java.util.Random;
 
 public class BreadOvenBlock extends BlockBase {
     boolean keepInventory;
+    public static final AxisAlignedBB BOUNDS = new AxisAlignedBB(0, 0, 0, 1, 1.25, 1);
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     public static final PropertyInteger LOGS = PropertyInteger.create("logs", 0, 4);
     public static final PropertyInteger DOUGH = PropertyInteger.create("dough", 0, 2);
@@ -47,6 +48,10 @@ public class BreadOvenBlock extends BlockBase {
         keepInventory = false;
         this.setDefaultState(this.blockState.getBaseState().withProperty(LOGS, 0).withProperty(DOUGH, 0));
         setHardness(5.0F);
+    }
+
+    public AxisAlignedBB getBoundingBox(IBlockState p_getBoundingBox_1_, IBlockAccess p_getBoundingBox_2_, BlockPos p_getBoundingBox_3_) {
+        return BOUNDS;
     }
 
     public boolean isOpaqueCube(IBlockState p_isOpaqueCube_1_) {

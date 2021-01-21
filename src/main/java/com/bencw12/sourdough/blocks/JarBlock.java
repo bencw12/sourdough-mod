@@ -33,6 +33,7 @@ public class JarBlock extends BlockBase implements ITileEntityProvider {
     public static final AxisAlignedBB JAR_AABB = new AxisAlignedBB(0.125D, 0, 0.125D, 0.875D, 0.625D, 0.875D);
 
     public static final PropertyInteger FERMENTING_STATE = PropertyInteger.create("fermenting", 0, 6);
+    public static final PropertyInteger TIER = PropertyInteger.create("tier", 1, 3);
 
 
     private boolean isSaturated;
@@ -149,9 +150,36 @@ public class JarBlock extends BlockBase implements ITileEntityProvider {
                 jar.setSlot(0, new ItemStack(Items.WHEAT));
                 handItem.shrink(1);
             } else if (output.isEmpty() && !dough.isEmpty() && fermentAid.isEmpty() && !jar.isSaturated() && isFermentAid(handItem)) {
-                jar.setSlot(1, new ItemStack(handItem.getItem()));
-                handItem.shrink(1);
-            } else if (output.isEmpty() && !dough.isEmpty() && !fermentAid.isEmpty() && !jar.isSaturated() && canSaturate(handItem)) {
+
+                if (dough.getItemDamage() == 3){
+                    jar.setSlot(1, new ItemStack(handItem.getItem()));
+                    handItem.shrink(1);
+                } else {
+                    NBTTagCompound nbt = dough.getTagCompound();
+                    ItemStack newAid;
+                    switch(nbt.getString("Tier")) {
+                        case "tier1":
+                            newAid = new ItemStack(Items.SUGAR);
+                            break;
+                        case "tier2":
+                            newAid = new ItemStack(Items.NETHER_WART);
+                            break;
+                        case "tier3":
+                            newAid = new ItemStack(Items.CHORUS_FRUIT);
+                            break;
+                        default:
+                            newAid = ItemStack.EMPTY;
+                            break;
+
+                    }
+                    if(player.getHeldItem(hand).getItem() == newAid.getItem()){
+                        jar.setSlot(1, newAid);
+                        handItem.shrink(1);
+                    }
+                }
+
+
+            } else if (output.isEmpty() && !dough.isEmpty() && !fermentAid.isEmpty() && !jar.isSaturated() && canSaturate(handItem) && jar.getFermentedResult() != 0) {
                 if (handItem.getItem() instanceof ItemPotion) {
 
                     NBTTagCompound nbt = handItem.getTagCompound();
@@ -210,7 +238,7 @@ public class JarBlock extends BlockBase implements ITileEntityProvider {
 
 
     public BlockStateContainer createBlockState(){
-        return new BlockStateContainer(this, new IProperty[]{FERMENTING_STATE});
+        return new BlockStateContainer(this, new IProperty[]{FERMENTING_STATE, TIER});
     }
 
     public boolean canBeFermented(ItemStack stack){
@@ -248,7 +276,6 @@ public class JarBlock extends BlockBase implements ITileEntityProvider {
     public static void setState(boolean isFermenting, World world, BlockPos pos) {
         IBlockState state = world.getBlockState(pos);
         TileEntity te = world.getTileEntity(pos);
-
         if(!world.isRemote) {
             if (te != null) {
                 te.validate();
