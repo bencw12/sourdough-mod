@@ -72,10 +72,30 @@ public class ItemSourdoughStarter extends Item {
 
         te.markDirty();
 
+        IBlockState jarState;
 
 
-        IBlockState jarState = ModBlocks.JAR_BLOCK.getDefaultState();
+        jarState = ModBlocks.JAR_BLOCK.getDefaultState();
 
+        int tier = 1;
+
+        switch(handItem.getTagCompound().getString("Tier")){
+            case "tier1":
+                tier = 1;
+                break;
+            case "tier2":
+                tier = 2;
+                break;
+            case "tier3":
+                tier = 3;
+                break;
+            default:
+                tier = 1;
+                break;
+        }
+
+
+        jarState.withProperty(JarBlock.TIER, tier);
         world.setBlockState(pos, jarState);
         player.setHeldItem(hand, ItemStack.EMPTY);
         world.setTileEntity(pos, te);
