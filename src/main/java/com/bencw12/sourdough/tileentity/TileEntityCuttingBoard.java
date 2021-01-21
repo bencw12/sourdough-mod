@@ -168,12 +168,12 @@ public class TileEntityCuttingBoard extends TileEntity implements IInventory, IT
 
     @Override
     public void update() {
-        if(!this.world.isRemote) {
+        //if(!this.world.isRemote) {
             if (world.getBlockState(pos).getValue(CuttingBoardBlock.DOUGH) != 4 - this.dough.get(0).getItemDamage() && !this.dough.get(0).isEmpty())
                 world.setBlockState(pos, ModBlocks.CUTTING_BOARD_BLOCK.getDefaultState().withProperty(CuttingBoardBlock.FACING, world.getBlockState(pos).getValue(CuttingBoardBlock.FACING)).withProperty(CuttingBoardBlock.DOUGH, 4 - this.dough.get(0).getItemDamage()));
             if (this.dough.get(0).isEmpty())
                 world.setBlockState(pos, ModBlocks.CUTTING_BOARD_BLOCK.getDefaultState().withProperty(CuttingBoardBlock.FACING, world.getBlockState(pos).getValue(CuttingBoardBlock.FACING)).withProperty(CuttingBoardBlock.DOUGH, 0));
-        }
+        //}
         this.markDirty();
     }
 }

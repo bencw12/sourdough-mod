@@ -36,6 +36,7 @@ public class TileEntityJar extends TileEntity implements ITickable, IInventory {
     private String jarCustomName;
     private boolean isSaturated;
     private String potionType;
+    private int tier;
 
 
     private NonNullList<ItemStack> jarItemStacks;
@@ -128,41 +129,41 @@ public class TileEntityJar extends TileEntity implements ITickable, IInventory {
                     int damage = dough.getItemDamage();
                     switch(damage){
                         case 1:
-                            return 12000;
+                            return 120;
                         case 2:
-                            return 24000;
+                            return 240;
                         case 3:
-                            return 36000;
+                            return 360;
                     }
                 }
-                else
-                    return 48000;
+                else if(getFermentedResult() == 2)
+                    return 480;
 
             } else if(tier.equals("tier2")){
                 if(dough.isItemDamaged()){
                     int damage = dough.getItemDamage();
                     switch(damage){
                         case 1:
-                            return 15000;
+                            return 150;
                         case 2:
-                            return 30000;
+                            return 300;
                         case 3:
-                            return 45000;
+                            return 450;
                     }
                 }
-                else
-                    return 72000;
+                else if(getFermentedResult() == 3)
+                    return 720;
 
             } else if(tier.equals("tier3")){
                 if(dough.isItemDamaged()){
                     int damage = dough.getItemDamage();
                     switch(damage){
                         case 1:
-                            return 18000;
+                            return 180;
                         case 2:
-                            return 32000;
+                            return 320;
                         case 3:
-                            return 50000;
+                            return 500;
                     }
                 }
             }
@@ -252,6 +253,7 @@ public class TileEntityJar extends TileEntity implements ITickable, IInventory {
         this.totalFermentTime = compound.getInteger("FermentTimeTotal");
         this.isSaturated = compound.getBoolean("isSaturated");
         this.potionType = compound.getString("PotionType");
+        this.potionType = compound.getString("PotionType");
         jarItemStacks = NonNullList.<ItemStack>withSize(3, ItemStack.EMPTY);
         ItemStackHelper.loadAllItems(compound, this.jarItemStacks);
 
@@ -286,13 +288,87 @@ public class TileEntityJar extends TileEntity implements ITickable, IInventory {
 
         boolean flag = false;
 
-        //System.out.println(this.jarItemStacks.get(1).getItem());
+        if(this.world.isRemote){
+            ItemStack dough = this.jarItemStacks.get(0);
+            ItemStack output = this.jarItemStacks.get(2);
+            if(dough.hasTagCompound()) {
+                switch (dough.getTagCompound().getString("Tier")) {
+                    case "tier1":
+                        this.tier = 1;
+                        break;
+                    case "tier2":
+                        this.tier = 2;
+                        break;
+                    case "tier3":
+                        this.tier = 3;
+                        break;
+                    default:
+                        break;
+
+                }
+            }
+            if(output.hasTagCompound()){
+                switch (output.getTagCompound().getString("Tier")) {
+                    case "tier1":
+                        this.tier = 1;
+                        break;
+                    case "tier2":
+                        this.tier = 2;
+                        break;
+                    case "tier3":
+                        this.tier = 3;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if(this.world.getBlockState(pos).getValue(JarBlock.TIER) != this.tier){
+
+
+                if(tier != 0)
+                    this.world.setBlockState(pos, ModBlocks.JAR_BLOCK.getDefaultState().withProperty(JarBlock.FERMENTING_STATE, (world.getBlockState(pos).getValue(JarBlock.FERMENTING_STATE))).withProperty(JarBlock.TIER, tier));
+
+            }
+        }
+
 
         if (!this.world.isRemote) {
 
+            ItemStack dough = this.jarItemStacks.get(0);
+
             //If there is dough in the jar but it is not saturated, change the model to the jar with dough but no water
             if(!this.jarItemStacks.get(0).isEmpty()) {
-                if (fermentTime <= totalFermentTime * 1 / 5)
+                if(dough.getItem()==ModItems.SOURDOUGH_STARTER){
+                    switch(dough.getTagCompound().getString("Tier")){
+                        case "tier1":
+                            tier = 1;
+                            break;
+                        case "tier2":
+                            tier = 2;
+                            break;
+                        case "tier3":
+                            tier = 3;
+                            break;
+                        default:
+                            break;
+
+                    }
+
+                    int remaining = dough.getItemDamage();
+                    if(this.isFermenting()) {
+                        int lvls = 6 - remaining;
+                        int interval = totalFermentTime / (6 - lvls);
+
+                        if (fermentTime % interval == 0.0 && fermentTime != 0) {
+                            world.setBlockState(pos, ModBlocks.JAR_BLOCK.getDefaultState().withProperty(JarBlock.FERMENTING_STATE, (world.getBlockState(pos).getValue(JarBlock.FERMENTING_STATE)) + 1).withProperty(JarBlock.TIER, tier));
+                        }
+                    } else {
+                        world.setBlockState(pos, ModBlocks.JAR_BLOCK.getDefaultState().withProperty(JarBlock.FERMENTING_STATE, 6 - remaining).withProperty(JarBlock.TIER, tier));
+                    }
+
+                }
+                else if (fermentTime <= totalFermentTime * 1 / 5)
                     world.setBlockState(pos, ModBlocks.JAR_BLOCK.getDefaultState().withProperty(JarBlock.FERMENTING_STATE, 1));
                 else if (fermentTime <= totalFermentTime * 2 / 5)
                     world.setBlockState(pos, ModBlocks.JAR_BLOCK.getDefaultState().withProperty(JarBlock.FERMENTING_STATE, 2));
@@ -304,7 +380,20 @@ public class TileEntityJar extends TileEntity implements ITickable, IInventory {
                     world.setBlockState(pos, ModBlocks.JAR_BLOCK.getDefaultState().withProperty(JarBlock.FERMENTING_STATE, 5));
             }
             else if(!this.jarItemStacks.get(2).isEmpty()){
-                world.setBlockState(pos, ModBlocks.JAR_BLOCK.getDefaultState().withProperty(JarBlock.FERMENTING_STATE, 6));
+                switch(jarItemStacks.get(2).getTagCompound().getString("Tier")){
+                    case "tier1":
+                        tier = 1;
+                        break;
+                    case "tier2":
+                        tier = 2;
+                        break;
+                    case "tier3":
+                        tier = 3;
+                        break;
+                    default:
+                        break;
+                }
+                world.setBlockState(pos, ModBlocks.JAR_BLOCK.getDefaultState().withProperty(JarBlock.FERMENTING_STATE, 6).withProperty(JarBlock.TIER, tier));
             }
             else
                 world.setBlockState(pos, ModBlocks.JAR_BLOCK.getDefaultState().withProperty(JarBlock.FERMENTING_STATE, 0));
@@ -317,12 +406,13 @@ public class TileEntityJar extends TileEntity implements ITickable, IInventory {
                 totalFermentTime = this.getFermentTime();
 
 
+
                 if(fermentTime == totalFermentTime){
 
                     NBTTagCompound compound = new NBTTagCompound();
-                    ItemStack dough = this.jarItemStacks.get(0);
 
-                    if(this.jarItemStacks.get(0).hasTagCompound()){
+
+                    if(dough.hasTagCompound()){
                         compound = this.jarItemStacks.get(0).getTagCompound();
                     }
 
@@ -449,28 +539,16 @@ public class TileEntityJar extends TileEntity implements ITickable, IInventory {
                 if (nbt.hasKey("Tier")) {
                     if (nbt.getString("Tier").equals("tier1") && fermentAid.getItem() == Items.SUGAR)
                         return 1;
-                    else if (nbt.getString("Tier").equals("tier2") && fermentAid.getItem() == Items.NETHER_WART)
+                    else if (nbt.getString("Tier").equals("tier2") && fermentAid.getItem() == Items.NETHER_WART || nbt.getString("Tier").equals("tier1") && fermentAid.getItem() == Items.NETHER_WART && dough.getItemDamage() == 3)
                         return 2;
-                    else if(nbt.getString("Tier").equals("tier3") && fermentAid.getItem() == Items.CHORUS_FRUIT)
+                    else if(nbt.getString("Tier").equals("tier3") && fermentAid.getItem() == Items.CHORUS_FRUIT || nbt.getString("Tier").equals("tier2") && fermentAid.getItem() == Items.CHORUS_FRUIT && dough.getItemDamage() == 3)
                         return 3;
                     else
                         return 0;
                 }
             }
         }
-        else if(dough.hasTagCompound()) {
-
-            NBTTagCompound nbt = dough.getTagCompound();
-            if(nbt.hasKey("Tier")){
-                if(nbt.getString("Tier").equals("tier1") && fermentAid.getItem() == Items.NETHER_WART)
-                    return 2;
-                else if(nbt.getString("Tier").equals("tier2") && fermentAid.getItem() == Items.CHORUS_FRUIT)
-                    return 3;
-                else
-                    return 0;
-            } else
-                return 0;
-        } else if(dough.getItem() == Items.WHEAT && fermentAid.isEmpty()){
+        else if(dough.getItem() == Items.WHEAT && fermentAid.getItem() == Items.SUGAR){
             return 1;
         }
 
